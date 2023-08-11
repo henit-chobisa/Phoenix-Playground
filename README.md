@@ -1,4 +1,4 @@
-# Channels
+# Chat
 
 To start your Phoenix server:
 

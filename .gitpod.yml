@@ -1,0 +1,13 @@
+image:
+  file: .gitpod.Dockerfile
+  
+tasks:
+  - init: mix compile
+    command: iex -S mix
+  - name: install phoenix
+    command: mix archive.install hex phx_new
+
+
+vscode:
+  extensions:
+    - "jakebecker.elixir-ls"

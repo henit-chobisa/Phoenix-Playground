@@ -7,18 +7,18 @@
 # General application configuration
 import Config
 
-config :channels,
-  ecto_repos: [Channels.Repo]
+config :chat,
+  ecto_repos: [Chat.Repo]
 
 # Configures the endpoint
-config :channels, ChannelsWeb.Endpoint,
+config :chat, ChatWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [
-    formats: [html: ChannelsWeb.ErrorHTML, json: ChannelsWeb.ErrorJSON],
+    formats: [json: ChatWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Channels.PubSub,
-  live_view: [signing_salt: "pHKu7U5s"]
+  pubsub_server: Chat.PubSub,
+  live_view: [signing_salt: "KsrYU58Z"]
 
 # Configures the mailer
 #
@@ -27,29 +27,7 @@ config :channels, ChannelsWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :channels, Channels.Mailer, adapter: Swoosh.Adapters.Local
-
-# Configure esbuild (the version is required)
-config :esbuild,
-  version: "0.17.11",
-  default: [
-    args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../assets", __DIR__),
-    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
-  ]
-
-# Configure tailwind (the version is required)
-config :tailwind,
-  version: "3.3.2",
-  default: [
-    args: ~w(
-      --config=tailwind.config.js
-      --input=css/app.css
-      --output=../priv/static/assets/app.css
-    ),
-    cd: Path.expand("../assets", __DIR__)
-  ]
+config :chat, Chat.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configures Elixir's Logger
 config :logger, :console,
