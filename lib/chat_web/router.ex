@@ -7,6 +7,8 @@ defmodule ChatWeb.Router do
 
   scope "/api", ChatWeb do
     pipe_through :api
+    get "/v1/hello", HelloController, :hello
+    resources "/v1/products", ProductController
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
