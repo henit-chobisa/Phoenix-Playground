@@ -1,12 +1,12 @@
 image:
-  file: .gitpod.Dockerfile
-  
+  file: gitpod/.gitpod.dockerfile
+ports:
+  - port: 4000
+    onOpen: open-preview 
 tasks:
-  - init: mix compile
-    command: iex -S mix
-  - name: install phoenix
-    command: mix archive.install hex phx_new
-
+  - name: Phx
+    init: gitpod/init.sh
+    command: gitpod/start.sh
 
 vscode:
   extensions:
